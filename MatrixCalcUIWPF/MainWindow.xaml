@@ -1,0 +1,231 @@
+﻿<Window x:Class="MatrixCalcUIWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MatrixCalcUIWPF"
+        mc:Ignorable="d"
+        Title="Matrix Calculator by Oleksii Horovych" Height="1080" Width="1920">
+
+    <Window.Resources>
+        <!-- Base style for TextBox with rounded corners -->
+        <Style x:Key="RoundedTextBoxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextAlignment" Value="Right" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="#FFEFEFEF" 
+                                CornerRadius="10" 
+                                BorderBrush="Gray" 
+                                BorderThickness="1">
+                            <ScrollViewer Margin="0" 
+                                          x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!-- RoundedButtonStyle -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Padding" Value="10,5" />
+            <Setter Property="Background" Value="#FFEFEFEF" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFD0D0D0" />
+                                <Setter Property="BorderBrush" Value="DarkGray" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+        <!-- Override style for Multiply and Power ofTextBox -->
+        <Style x:Key="OverrideTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource RoundedTextBoxStyle}">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="White" 
+                        CornerRadius="5" 
+                        BorderBrush="Gray" 
+                        BorderThickness="1">
+                            <ScrollViewer Margin="0" 
+                                  x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,0">
+        <!-- Columns Definition -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Rows Definition -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Matrix A -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,30,0,0">
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Matrix A" VerticalAlignment="Top" Width="120" TextAlignment="Center" FontFamily="Arial Black" Margin="0,0,0,10"/>
+            <Grid x:Name="MatrixA" HorizontalAlignment="Center">
+                <!-- Define 3x3 grid for matrix cells -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0" Grid.Column="0" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}" />
+                <TextBox Grid.Row="0" Grid.Column="1" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}" />
+                <TextBox Grid.Row="0" Grid.Column="2" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}" />
+                <TextBox Grid.Row="1" Grid.Column="0" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}" />
+                <TextBox Grid.Row="1" Grid.Column="1" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}" />
+                <TextBox Grid.Row="1" Grid.Column="2" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}" />
+                <TextBox Grid.Row="2" Grid.Column="0" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}" />
+                <TextBox Grid.Row="2" Grid.Column="1" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}" />
+                <TextBox Grid.Row="2" Grid.Column="2" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}" />
+            </Grid>
+
+            <!-- AddRowsCols Matrix A -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <Button x:Name="AddButton_A" Content="+" Width="25" Height="22" Click="AddDimension_Click" Tag="{Binding ElementName=MatrixA}" Style="{StaticResource RoundedButtonStyle}"/>
+                <Button x:Name="RemoveButton_A" Content="-" Width="25" Height="22" Click="RemoveDimension_Click" Tag="{Binding ElementName=MatrixA}" Style="{StaticResource RoundedButtonStyle}"/>
+                <Button x:Name="ClearButton_A" Content="Clean" Width="39" Height="22" Click="ClearMatrix_Click" Tag="{Binding ElementName=MatrixA}" Style="{StaticResource RoundedButtonStyle}" />
+            </StackPanel>
+
+            <!-- Buttons Matrix A -->
+            <Grid x:Name="ButtonsMatrixA" Margin="0,10" Width="480">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Height="25" Margin="0,5,0,5" Content="DETERMINANT" HorizontalAlignment="Stretch" Click="DeterminantButtonA_Click" Style="{StaticResource RoundedButtonStyle}"/>
+                <Button Grid.Row="0" Grid.Column="1" Height="25" Margin="0,5,0,5" Content="INVERSE" HorizontalAlignment="Stretch" Click="InverseButtonA_Click" Style="{StaticResource RoundedButtonStyle}" />
+                <Button Grid.Row="1" Grid.Column="0" Height="25" Margin="0,5,0,5" Content="RANK" HorizontalAlignment="Stretch" Click="RankButtonA_Click" Style="{StaticResource RoundedButtonStyle}" />
+                <Button Grid.Row="1" Grid.Column="1" Height="25" Margin="0,5,0,5" Content="TRANSPOSE" HorizontalAlignment="Stretch" Click="TransposeButtonA_Click" Style="{StaticResource RoundedButtonStyle}" />
+                <Button Grid.Row="2" Grid.Column="0" Height="25" Margin="0,5,0,5" Content="MULTIPLY BY" HorizontalAlignment="Stretch" Click="MultiplyByScalarA_click" Style="{StaticResource RoundedButtonStyle}" />
+                <Button Grid.Row="2" Grid.Column="1" Height="25" Margin="0,5,0,5" Content="TO THE POWER OF " HorizontalAlignment="Stretch" Click="PowerOfA_click" Style="{StaticResource RoundedButtonStyle}" />
+                <Button Grid.Row="3" Height="25" Margin="0,5,0,5" Content="ROW ECHELON FORM" Grid.ColumnSpan="2" Click="REFButtonA_click" Style="{StaticResource RoundedButtonStyle}"/>
+                <TextBox x:Name="MultiplyByTextBoxA" Grid.Row="2" Grid.Column="0" Width="50" Height="25" Margin="190,5,0,5" Style="{StaticResource OverrideTextBoxStyle}" Text="0" />
+                <TextBox x:Name="PowerOfTextBoxA" Grid.Row="2" Grid.Column="1" Width="50" Height="25" Margin="190,5,0,5" Style="{StaticResource OverrideTextBoxStyle}" Text="0"/>
+            </Grid>
+        </StackPanel>
+
+        <!-- Operations -->
+        <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" Width="150" HorizontalAlignment="Center" Margin="0,110,0,0" Grid.ColumnSpan="2" Height="150">
+            <Button Content="↔" Width="50" Height="30" Click="SwapMatrices_Click" Style="{StaticResource RoundedButtonStyle}"/>
+            <Button Content="A × B" Width="50" Height="30" Margin="5" Click="MultiplyMatrices_Click" Style="{StaticResource RoundedButtonStyle}" />
+            <Button Content="A + B" Width="50" Height="30" Margin="5" Click="AddMatrices_Click" Style="{StaticResource RoundedButtonStyle}"/>
+            <Button Content="A - B" Width="50" Height="30" Margin="5" Click="SubstractMatrices_Click" Style="{StaticResource RoundedButtonStyle}"/>
+        </StackPanel>
+
+        <!-- Matrix B -->
+        <StackPanel Grid.Row="0" Grid.Column="3" Margin="0,30,0,0">
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Matrix B" VerticalAlignment="Top" Width="120" TextAlignment="Center" FontFamily="Arial Black" Margin="0,0,0,10"/>
+            <Grid x:Name="MatrixB" HorizontalAlignment="Center">
+                <!-- Define 3x3 grid for matrix cells -->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0" Grid.Column="0" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}"/>
+                <TextBox Grid.Row="0" Grid.Column="2" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}"/>
+                <TextBox Grid.Row="1" Grid.Column="0" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}"/>
+                <TextBox Grid.Row="1" Grid.Column="1" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}"/>
+                <TextBox Grid.Row="2" Grid.Column="0" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Width="50" Height="25" Margin="5" Style="{StaticResource RoundedTextBoxStyle}"/>
+            </Grid>
+
+            <!-- AddRowsCols Matrix B -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+                <Button x:Name="AddButton_B" Content="+" Width="25" Height="22" Click="AddDimension_Click" Tag="{Binding ElementName=MatrixB}" Style="{StaticResource RoundedButtonStyle}"/>
+                <Button x:Name="RemoveButton_B" Content="-" Width="25" Height="22" Click="RemoveDimension_Click" Tag="{Binding ElementName=MatrixB}" Style="{StaticResource RoundedButtonStyle}"/>
+                <Button x:Name="ClearButton_B" Content="Clean" Width="39" Height="22" Click="ClearMatrix_Click" Tag="{Binding ElementName=MatrixB}" Style="{StaticResource RoundedButtonStyle}"/>
+            </StackPanel>
+
+            <!-- Buttons Matrix B -->
+            <Grid x:Name="ButtonsMatrixB" Margin="0,10" Width="480">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Height="25" Margin="0,5,0,5" Content="DETERMINANT" HorizontalAlignment="Stretch" Click="DeterminantButtonB_Click" Style="{StaticResource RoundedButtonStyle}"/>
+                <Button Grid.Row="0" Grid.Column="1" Height="25" Margin="0,5,0,5" Content="INVERSE" HorizontalAlignment="Stretch" Click="InverseButtonB_Click" Style="{StaticResource RoundedButtonStyle}" />
+                <Button Grid.Row="1" Grid.Column="0" Height="25" Margin="0,5,0,5" Content="RANK" HorizontalAlignment="Stretch" Click="RankButtonB_Click" Style="{StaticResource RoundedButtonStyle}" />
+                <Button Grid.Row="1" Grid.Column="1" Height="25" Margin="0,5,0,5" Content="TRANSPOSE" HorizontalAlignment="Stretch" Click="TransposeButtonB_Click" Style="{StaticResource RoundedButtonStyle}" />
+                <Button Grid.Row="2" Grid.Column="0" Height="25" Margin="0,5,0,5" Content="MULTIPLY BY" HorizontalAlignment="Stretch" Click="MultiplyByScalarB_click" Style="{StaticResource RoundedButtonStyle}" />
+                <Button Grid.Row="2" Grid.Column="1" Height="25" Margin="0,5,0,5" Content="TO THE POWER OF " HorizontalAlignment="Stretch" Click="PowerOfB_click" Style="{StaticResource RoundedButtonStyle}" />
+                <Button Grid.Row="3" Height="25" Margin="0,5,0,5" Content="ROW ECHELON FORM" Grid.ColumnSpan="2" Click="REFButtonB_click" Style="{StaticResource RoundedButtonStyle}"/>
+                <TextBox x:Name="MultiplyByTextBoxB" Grid.Row="2" Grid.Column="0" Width="50" Height="25" Margin="190,5,0,5" Style="{StaticResource OverrideTextBoxStyle}" Text="0" />
+                <TextBox x:Name="PowerOfTextBoxB" Grid.Row="2" Grid.Column="1" Width="50" Height="25" Margin="190,5,0,5" Style="{StaticResource OverrideTextBoxStyle}" Text="0"/>
+            </Grid>
+        </StackPanel>
+
+        <!-- ScrollViewer for results -->
+        <Border Grid.Row="1" Grid.ColumnSpan="4" BorderBrush="Black" BorderThickness="0,1,0,0">
+            <ScrollViewer Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Left" Width="1920" 
+                  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" 
+                  Height="693" VerticalAlignment="Top" Margin="0,10,0,0">
+                <StackPanel x:Name="ResultsStackPanel"/>
+            </ScrollViewer>
+        </Border>
+        <Grid Grid.Column="1" Grid.ColumnSpan="2" HorizontalAlignment="Center" Height="55" Margin="0,296,0,0" VerticalAlignment="Top" Width="300" Grid.Row="0">
+            <Button Content="CLEAR RESULTS" HorizontalAlignment="Center" Height="25" VerticalAlignment="Top" Width="280" Style="{StaticResource RoundedButtonStyle}" Margin="0,20,0,0" Click="ClearResults_Click"/>
+        </Grid>
+        
+    </Grid>
+</Window> 

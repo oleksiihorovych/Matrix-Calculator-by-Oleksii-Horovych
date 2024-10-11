@@ -1,0 +1,35 @@
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\bin\Debug\net8.0\MatrixCalc.deps.json
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\bin\Debug\net8.0\MatrixCalc.dll
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\bin\Debug\net8.0\MatrixCalc.pdb
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.GeneratedMSBuildEditorConfig.editorconfig
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.AssemblyInfoInputs.cache
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.AssemblyInfo.cs
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.csproj.CoreCompileInputs.cache
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.dll
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\refint\MatrixCalc.dll
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.pdb
+D:\UK vyuka\proga 2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\ref\MatrixCalc.dll
+D:\uk\programovani2\matrix-calculator\MatrixCalc\bin\Debug\net8.0\MatrixCalc.pdb
+D:\uk\programovani2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.csproj.AssemblyReference.cache
+D:\uk\programovani2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.GeneratedMSBuildEditorConfig.editorconfig
+D:\uk\programovani2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.AssemblyInfoInputs.cache
+D:\uk\programovani2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.AssemblyInfo.cs
+D:\uk\programovani2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.csproj.CoreCompileInputs.cache
+D:\uk\programovani2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.csproj.Up2Date
+D:\uk\programovani2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.dll
+D:\uk\programovani2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\refint\MatrixCalc.dll
+D:\uk\programovani2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.pdb
+D:\uk\programovani2\matrix-calculator\MatrixCalc\bin\Debug\net8.0\MatrixCalc.deps.json
+D:\uk\programovani2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\ref\MatrixCalc.dll
+D:\UK\proga2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.csproj.AssemblyReference.cache
+D:\UK\proga2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.GeneratedMSBuildEditorConfig.editorconfig
+D:\UK\proga2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.AssemblyInfoInputs.cache
+D:\UK\proga2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.AssemblyInfo.cs
+D:\UK\proga2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.csproj.CoreCompileInputs.cache
+D:\UK\proga2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.csproj.Up2Date
+D:\UK\proga2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.dll
+D:\UK\proga2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\refint\MatrixCalc.dll
+D:\UK\proga2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\MatrixCalc.pdb
+D:\UK\proga2\matrix-calculator\MatrixCalc\bin\Debug\net8.0\MatrixCalc.deps.json
+D:\UK\proga2\matrix-calculator\MatrixCalc\bin\Debug\net8.0\MatrixCalc.pdb
+D:\UK\proga2\matrix-calculator\MatrixCalc\obj\Debug\net8.0\ref\MatrixCalc.dll
